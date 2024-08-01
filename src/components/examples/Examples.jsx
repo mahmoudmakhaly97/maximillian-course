@@ -2,6 +2,7 @@ import React , { useState } from 'react'
 import TabButton from '../tab-button/TabButton'
 import { EXAMPLES } from '../../data'
 import Section from '../section/Section';
+import Tabs from '../tabs/Tabs';
 
 const Examples = () => {
       const [selectedTopic, setSelectedTopic] = useState("");
@@ -12,15 +13,12 @@ const Examples = () => {
   }
   
   return (
-      <Section id="examples" title="Examples" className="">
- 
-          <menu>
-          <TabButton isSelected={selectedTopic === "components"}   onSelect={()=>handleSelect("components")}  >Component</TabButton> 
-               <TabButton isSelected={selectedTopic === "jsx"} onSelect={()=>handleSelect("jsx")}  >Jsx</TabButton> 
-              <TabButton  isSelected={selectedTopic === "props"} onSelect={()=>handleSelect("props")}  >Props</TabButton> 
-              <TabButton isSelected={selectedTopic === "state"}  onSelect={()=>handleSelect("state")} >State</TabButton> 
-    </menu>
-          <div id="tabs-content">
+      <Section id="examples"  title="Examples"   className="">
+       <Tabs buttonsContainer = "menu" buttons={<><TabButton isSelected={selectedTopic === "components"} onClick={() => handleSelect("components")}  >Component</TabButton> 
+               <TabButton isSelected={selectedTopic === "jsx"} onClick={()=>handleSelect("jsx")}  >Jsx</TabButton> 
+              <TabButton  isSelected={selectedTopic === "props"} onClick={()=>handleSelect("props")}  >Props</TabButton> 
+              <TabButton isSelected={selectedTopic === "state"}  onClick={()=>handleSelect("state")} >State</TabButton> </>}>
+            <div id="tabs-content">
             {
               selectedTopic ?( <React.Fragment><h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
@@ -28,9 +26,9 @@ const Examples = () => {
               <code >{EXAMPLES[selectedTopic].code}</code>
                 </pre></React.Fragment>) : <h3>Please Select an Topic</h3>
           }
-     </div>
-        </Section>
+        </div>
+        </Tabs>
+       </Section>
   )
 }
-
 export default Examples

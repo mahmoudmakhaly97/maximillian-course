@@ -1,9 +1,10 @@
 import React from 'react'
 import { CORE_CONCEPTS } from "../../data.js";
 import CoreConcept from "../coreConcept/CoreConcept.jsx";
+import Section from '../section/Section.jsx';
 const CoreConcepts = () => {
   return (
-  <section id="core-concepts">
+  <Section id="core-concepts">
           <h3>Core concepts</h3>
           <ul>
             {
@@ -15,7 +16,7 @@ const CoreConcepts = () => {
               })
          }
            </ul>
-        </section>
+        </Section>
   )
 }
 
